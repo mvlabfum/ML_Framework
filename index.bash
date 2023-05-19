@@ -3,15 +3,12 @@
 # sudoproject is located at /content/devs/?
 # repo it will be located at $projectpath/$projectname
 
-argfile="args"
-# argfile=".args"
 envfile="env"
+argfile="args"
 projectpath="/content" # fell free to choose it any what you like
 projectname="${5:-ML_Framework}" # (Notic) the name of project on the `repository`.
 projectrepo="${4:-mvlabfum}"
-projectrepo="git@github.com:$projectrepo/$5.git"
-echo "----> $projectrepo"
-
+projectrepo="https://github.com/$projectrepo/$projectname.git"
 
 sudo mkdir -p "$projectpath"
 
