@@ -7,8 +7,11 @@ argfile="args"
 # argfile=".args"
 envfile="env"
 projectpath="/content" # fell free to choose it any what you like
-projectname="ML_Framework" # (Notic) the name of project on the `repository`.
-projectrepo="git@github.com:mvlabfum/ML_Framework.git"
+projectname="${5:-ML_Framework}" # (Notic) the name of project on the `repository`.
+projectrepo="${4:-mvlabfum}"
+projectrepo="git@github.com:$projectrepo/$5.git"
+echo "----> $projectrepo"
+
 
 sudo mkdir -p "$projectpath"
 
