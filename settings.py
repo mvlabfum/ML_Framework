@@ -128,7 +128,6 @@ kaggledict = readBIO(join(str(getenv('KAGGLE_CONFIG_DIR')), 'kaggle.json'), dotd
 kaggledict['key'] = kaggledict.get('key', '') or getenv('KAGGLE_KEY')
 kaggledict['username'] = kaggledict.get('username', '') or getenv('KAGGLE_USERNAME')
 
-print('!!!!!!!!!!!!!!!!!!', kaggledict)
 if getenv('KAGGLE_CHMOD'):
     system('chmod {} {}'.format(
         str(getenv('KAGGLE_CHMOD')),
@@ -137,7 +136,5 @@ if getenv('KAGGLE_CHMOD'):
 
 os.environ['KAGGLE_KEY'] = kaggledict['key']
 os.environ['KAGGLE_USERNAME'] = kaggledict['username']
-print(os.environ['KAGGLE_KEY'])
-print(os.environ['KAGGLE_USERNAME'])
 
 import kaggle # need to import here(after env variables had defined)
