@@ -138,6 +138,6 @@ if getenv('KAGGLE_CHMOD'):
 os.environ['KAGGLE_KEY'] = kaggledict['key']
 os.environ['KAGGLE_USERNAME'] = kaggledict['username']
 print(os.environ['KAGGLE_KEY'])
-print(os.environ['KAGGLE_KEY'])
+print(os.environ['KAGGLE_USERNAME'])
 
 import kaggle # need to import here(after env variables had defined)
