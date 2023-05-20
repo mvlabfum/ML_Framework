@@ -2,21 +2,15 @@ tname_step:
   forward:
     - input: [z, randn, [1, 4, 4]]  # input z
     - seq0
-    - seq1
     - Return: LOSS_VALUE
   
   seq0:
     input:
-    output: y
+    output: LOSS_VALUE
     head:
       - BB.Self:
           fn: tname
           input: [[x, z]]
-  
-  seq1:
-    input: y
-    output: LOSS_VALUE
-    head:
       - BB.Self:
           fn: tnameLoss
           input: [[y], [t]]
