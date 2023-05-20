@@ -4,7 +4,7 @@ net:
       - seq0
       - Return: y
 
-    seq{n}:
+    seq0:
       input: x
       output: y
       head:
