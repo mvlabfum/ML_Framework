@@ -2,11 +2,30 @@ net:
   params:
     forward:
       - seq0
+      - seq1
+      - concat:
+          input:
+            - y1
+            - y2
+          output: y3
+          params:
+            dim: 1
       - Return: y
 
     seq0:
       input: x
-      output: y
+      output: y1
+      head:
+        - .flatten:
+            start_dim: 1
+        - torch.nn.Linear:
+            in_features: 16
+            out_features: 4
+            bias: True
+    
+    seq1:
+      input: x
+      output: y2
       head:
         - .flatten:
             start_dim: 1
