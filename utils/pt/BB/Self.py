@@ -6,6 +6,7 @@ from utils.pt.building_block import BB
 
 class Self(BB): 
     def start(self):
+        self.upstream_name = 'x' # forward variable name
         self.Self_fn = str(self.kwargs.get('fn', 'lossfn'))
         self.Self_fn_params = self.kwargs.get('params', None)
         self.Self_input = list(self.kwargs.get('input', []))
@@ -14,12 +15,12 @@ class Self(BB):
         self.Self_inputString = []
         for i in self.Self_input: # x: denotes `upstream` tensor
             if isinstance(i, str):
-                self.Self_inputString.append(f'{i}=eBatch.get("{i}", x)')
+                self.Self_inputString.append(f'{i}=eBatch.get("{i}", {self.upstream_name})')
             elif isinstance(i, (list, tuple)):
                 if len(i) == 1:
-                    self.Self_inputString.append(f'{i[0]}=x')
+                    self.Self_inputString.append(f'{i[0]}={self.upstream_name}')
                 elif len(i) == 2:
-                    self.Self_inputString.append(f'{i[0]}=eBatch.get("{i[1]}", x)')
+                    self.Self_inputString.append(f'{i[0]}=eBatch.get("{i[1]}", {self.upstream_name})')
                 else:
                     assert False, '`type(i)={}` | It must be `str` or `list or tuple with length 1 or 2`'.format(type(i))
             else:
@@ -27,7 +28,7 @@ class Self(BB):
 
         self.Self_inputString = ', '.join(self.Self_inputString)
         
-        if isinstance(self.Self_fn_params, dict):
+        if isinstance(self.Self_fn_params, dict) and len(self.Self_fn_params) > 0:
             self.Self_inputString = self.Self_inputString + ', **self.Self_fn_params'
 
     def forward(self, x, eBatch):

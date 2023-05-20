@@ -1,6 +1,6 @@
-net_step:
+alexnet_step:
   forward:
-    - input: [z, randn, [1, 4, 4]]  # input z
+    - input: [z, randn, [3, 256, 256]]  # input z
     - seq0
     - Return: LOSS_VALUE
   
@@ -9,8 +9,8 @@ net_step:
     output: LOSS_VALUE
     head:
       - BB.Self:
-          fn: net
+          fn: alexnet
           input: [[x, z]]
       - BB.Self:
-          fn: netLoss
+          fn: alexnetLoss
           input: [[y], [t]]

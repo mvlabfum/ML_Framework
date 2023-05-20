@@ -562,6 +562,7 @@ class nnModuleBase(nn.Module):
             if _eparams is None:
                 _eparams = dict()
             assert isinstance(_eparams, dict)
+            _eparams = {**_eparams}
             for ep in getattr(e, 'Self_input', []):
                 if isinstance(ep, str):
                     _eparams[ep] = ep
