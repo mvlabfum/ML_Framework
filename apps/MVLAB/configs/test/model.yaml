@@ -23,6 +23,10 @@ net:
             - 4
             - 4
       tail:
+        - .flatten:
+            start_dim: 1
+        - torch.nn.Softmax:
+            dim: 1
         - BB.Print:
             msg: ----->
             shape: True
