@@ -23,7 +23,12 @@ alexnet:
             kernel_size: $seq0.f[i][4]
             stride: $seq0.f[i][5]
       f:
-        - [3, 11, 4, 0, 3, 2]
+        - [3,   11, 4, 0,  3, 2]
+        - [96,  5,  1, 2,  3, 2]
+        - [256, 3,  1, 1, -1, -1]
+        - [384, 3,  1, 1, -1, -1]
+        - [384, 3,  1, 1,  3, 2]
+        - [256, -1, -1, -1, -1, -1]
     
     seq1:
       input: x
@@ -42,7 +47,7 @@ alexnet:
         - torch.nn.ReLU:
             inplace: False
       tail:
-        - - torch.nn.Linear:
+        - torch.nn.Linear:
             in_features: $seq1.f[-1]
             out_features: $nclass
             bias: True
