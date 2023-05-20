@@ -2,7 +2,7 @@ tname:
   params:
     forward:
       - seq0
-      - Return: x
+      - Return: y
     
     seq0:
       input: x
