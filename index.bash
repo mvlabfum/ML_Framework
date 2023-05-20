@@ -10,7 +10,7 @@ projectpath="/content" # fell free to choose it any what you like
 projectname="${5:-ML_Framework}" # (Notic) the name of project on the `repository`.
 projectrepo="${4:-mvlabfum}"
 projectrepo="git@github.com:$projectrepo/$5.git"
-echo "$projectrepo"
+echo "----> $projectrepo"
 
 
 sudo mkdir -p "$projectpath"
