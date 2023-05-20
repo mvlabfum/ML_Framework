@@ -17,10 +17,33 @@ net:
       input: y
       output: y
       head:
+        - .view:
+            - -1
+            - 1
+            - 4
+            - 4
         - BB.Print:
             msg: ----->
             shape: True
             input: False
+      
+      supernode:
+        - torch.nn.ConvTranspose2d:
+            in_channels: $seq2.f[i]
+            out_channels: $seq2.f[i+1]
+            kernel_size: 4
+            stride: 2
+            padding: 1
+        - BB.Print:
+            msg: +++++>
+            shape: True
+            input: False
+      
+      f:
+        - 1
+        - 32
+        - 64
+        - 128
 
     seq0:
       input: x
