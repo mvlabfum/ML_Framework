@@ -18,10 +18,10 @@ net:
       output: y
       head:
         - .view:
-          - -1
-          - 1
-          - 8
-          - 8
+            - -1
+            - 1
+            - 8
+            - 8
         - BB.Print:
             msg: ----->
             shape: True
