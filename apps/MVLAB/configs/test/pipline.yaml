@@ -1,6 +1,6 @@
 tname_step:
   forward:
-    - input: [z, randn, [$zdim, 1, 1]]  # input z
+    - input: [z, randn, [3, 16, 16]]  # input z
     - seq0
     - Return: LOSS_VALUE
   
