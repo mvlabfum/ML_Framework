@@ -17,10 +17,16 @@ net:
       input: y
       output: y
       head:
+        .view:
+          -1
+          1
+          8
+          8
         - BB.Print:
             msg: ----->
             shape: True
             input: False
+
 
     seq0:
       input: x
@@ -30,7 +36,7 @@ net:
             start_dim: 1
         - torch.nn.Linear:
             in_features: 16
-            out_features: 4
+            out_features: 32
             bias: True
     
     seq1:
@@ -41,5 +47,5 @@ net:
             start_dim: 1
         - torch.nn.Linear:
             in_features: 16
-            out_features: 4
+            out_features: 32
             bias: True
