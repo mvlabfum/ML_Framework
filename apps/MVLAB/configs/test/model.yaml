@@ -22,10 +22,6 @@ net:
             - 1
             - 4
             - 4
-        - BB.Print:
-            msg: ----->
-            shape: True
-            input: False
       
       supernode:
         - torch.nn.ConvTranspose2d:
@@ -34,10 +30,10 @@ net:
             kernel_size: 4
             stride: 2
             padding: 1
-        - BB.Print:
-            msg: +++++>
-            shape: True
-            input: False
+        - torch.nn.BatchNorm2d:
+            num_features: $seq2.f[i+1]
+        - torch.nn.ReLU:
+            inplace: False
       
       f:
         - 1
