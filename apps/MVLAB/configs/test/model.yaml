@@ -14,7 +14,7 @@ net:
       - Return: y
 
     seq2:
-      input: x
+      input: y
       output: y
       head:
         - BB.Print:
