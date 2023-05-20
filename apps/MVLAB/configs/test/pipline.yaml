@@ -12,5 +12,5 @@ tname_step:
           fn: tname
           input: [z, y]
       - BB.Self:
-          fn: tnameLOSS
+          fn: tnameLoss
           input: [[y], [t]]
