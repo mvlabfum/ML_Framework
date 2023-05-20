@@ -9,6 +9,16 @@ net:
       output: y
       head:
         - BB.Print:
-            msg: -----> x
+            msg: -----> before
+            shape: True
+            input: False
+        - .flatten:
+            start_dim: 1
+        - torch.nn.Linear:
+            in_features: 16
+            out_features: 8
+            bias: True
+        - BB.Print:
+            msg: -----> after
             shape: True
             input: False
