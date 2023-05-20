@@ -1,3 +1,1 @@
 signal_key: X # Tensor name in batch
-unet_nch: 3
-unet_outch: 1

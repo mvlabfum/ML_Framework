@@ -1,6 +1,6 @@
-unet_step:
+net_step:
   forward:
-    - input: [z, randn, [3, 256, 256]]  # input z
+    - input: [z, randn, [1, 4, 4]]  # input z
     - seq0
     - Return: LOSS_VALUE
   
@@ -9,8 +9,8 @@ unet_step:
     output: LOSS_VALUE
     head:
       - BB.Self:
-          fn: unet
+          fn: net
           input: [[x, z]]
       - BB.Self:
-          fn: unetLoss
+          fn: netLoss
           input: [[y], [t]]
