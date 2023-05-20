@@ -1,24 +1,52 @@
-net:
+alexnet:
   params:
     forward:
       - seq0
+      - seq1
       - Return: x
-    
+
     seq0:
       input: x
       output: x
+      supernode:
+        - torch.nn.Conv2d:
+            in_channels: $seq0.f[i][0]
+            out_channels: $seq0.f[i+1][0]
+            kernel_size: $seq0.f[i][1]
+            stride: $seq0.f[i][2]
+            padding: $seq0.f[i][3]
+        - torch.nn.BatchNorm2d:
+            num_features: $seq0.f[i+1][0]
+        - torch.nn.ReLU:
+            inplace: False
+        - torch.nn.MaxPool2d:
+            kernel_size: $seq0.f[i][4]
+            stride: $seq0.f[i][5]
+      f:
+        - [3, 11, 4, 0, 3, 2]
+    
+    seq1:
+      input: x
+      output: x
       head:
-        - BB.Print:
-            msg: -----> before
-            shape: True
-            input: False
         - .flatten:
             start_dim: 1
+      supernode:
+        - torch.nn.Dropout:
+            p: 0.5 
+            inplace: False
         - torch.nn.Linear:
-            in_features: 16
-            out_features: 6
+            in_features: $seq1.f[i]
+            out_features: $seq1.f[i+1]
             bias: True
-        - BB.Print:
-            msg: -----> after
-            shape: True
-            input: False
+        - torch.nn.ReLU:
+            inplace: False
+      tail:
+        - - torch.nn.Linear:
+            in_features: $seq1.f[-1]
+            out_features: $nclass
+            bias: True
+      f:
+        - 9216
+        - 4096
+        - 4096
