@@ -17,7 +17,11 @@ net:
       input: y
       output: y
       head:
-        - .view: [-1 1 8 8]
+        - .view:
+          - -1
+          - 1
+          - 8
+          - 8
         - BB.Print:
             msg: ----->
             shape: True
