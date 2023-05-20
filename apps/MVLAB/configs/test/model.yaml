@@ -23,6 +23,7 @@ net:
             - 4
             - 4
       
+      pop_supernode: 2
       supernode:
         - torch.nn.ConvTranspose2d:
             in_channels: $seq2.f[i]
