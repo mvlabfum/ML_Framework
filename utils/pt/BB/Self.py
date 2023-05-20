@@ -33,5 +33,6 @@ class Self(BB):
 
         print('@@@@@@@@@@@@', self.Self_fn, self.Self_inputString)
     def forward(self, Self_x_var_upstream, eBatch):
+        print(self.Self_fn, Self_x_var_upstream)
         fn = getattr(eBatch['Self'], self.Self_fn)
         return eval(f'fn({self.Self_inputString})')
