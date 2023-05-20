@@ -10,7 +10,7 @@ tname_step:
     head:
       - BB.Self:
           fn: tname
-          input: [z, y]
+          input: [x, z]
       - BB.Self:
           fn: tnameLoss
           input: [[y], [t]]
