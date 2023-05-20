@@ -7,7 +7,7 @@ net:
           input:
             - y1
             - y2
-          output: y3
+          output: y
           params:
             dim: 1
       - Return: y
