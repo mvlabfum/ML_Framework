@@ -60,7 +60,7 @@ def puml(src_fname: str, dst_fname: str, **kwargs):
         fwrite(src, kwargs.get('s', '@startuml\n') + u + kwargs.get('e', '\n@enduml'))
     
     if not os.path.exists(join(getenv('GENIE_ML_STORAGE0'), '..', '..', 'plantuml.jar')):
-        logger.error('please download file: `` and paste it to ``'.format(
+        logger.error('please download file: `{}` and paste it to `{}`'.format(
             getenv('PUML_DOWNLOAD_PATH'),
             join(getenv('GENIE_ML_STORAGE0'), '..', '..', 'plantuml.jar')
         ))
