@@ -11,10 +11,6 @@ class CC(BB):
         self.C1 = self.kwargs.get('C1', {**self.C})
         self.C1['in_channels'] = self.C0['out_channels']
 
-        # print('self.C0', self.C0)
-        # print('self.C1', self.C1)
-        # print('='*60)
-        
         self.double_conv = nn.Sequential(
             nn.Conv2d(**self.C0),
             nn.BatchNorm2d(self.C0['out_channels']),
