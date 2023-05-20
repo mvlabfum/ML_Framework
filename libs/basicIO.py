@@ -1,4 +1,5 @@
 import os
+import sys
 import time
 import yaml
 import json
@@ -58,6 +59,12 @@ def puml(src_fname: str, dst_fname: str, **kwargs):
         assert isinstance(u, str), '`type(u)={}` | It must be `str`'.format(type(u))
         fwrite(src, kwargs.get('s', '@startuml\n') + u + kwargs.get('e', '\n@enduml'))
     
+    if not os.path.exists(join(getenv('GENIE_ML_STORAGE0'), '..', '..', 'plantuml.jar')):
+        logger.error('please download file: `` and paste it to ``'.format(
+            getenv('PUML_DOWNLOAD_PATH'),
+            join(getenv('GENIE_ML_STORAGE0'), '..', '..', 'plantuml.jar')
+        ))
+        sys.exit()
     os.system('cat "{}" | java -jar "{}" -pipe > "{}"'.format(
         src,
         kwargs.get('jarpath', join(getenv('GENIE_ML_STORAGE0'), '..', '..', 'plantuml.jar')),
