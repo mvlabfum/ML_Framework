@@ -6,11 +6,16 @@ tname_step:
   
   seq0:
     input:
-    output: LOSS_VALUE
+    output: y
     head:
       - BB.Self:
           fn: tname
           input: [[x, z]]
+  
+  seq1:
+    input: y
+    output: LOSS_VALUE
+    head:
       - BB.Self:
           fn: tnameLoss
           input: [[y], [t]]
