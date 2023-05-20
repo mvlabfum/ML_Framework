@@ -6,7 +6,7 @@ from utils.pt.building_block import BB
 
 class Self(BB): 
     def start(self):
-        self.upstream_name = 'Self_x_var_upstream'
+        self.upstream_name = 'x' # forward variable name
         self.Self_fn = str(self.kwargs.get('fn', 'lossfn'))
         self.Self_fn_params = self.kwargs.get('params', None)
         self.Self_input = list(self.kwargs.get('input', []))
@@ -31,8 +31,6 @@ class Self(BB):
         if isinstance(self.Self_fn_params, dict) and len(self.Self_fn_params) > 0:
             self.Self_inputString = self.Self_inputString + ', **self.Self_fn_params'
 
-        print('@@@@@@@@@@@@', self.Self_fn, self.Self_inputString)
-    def forward(self, Self_x_var_upstream, eBatch):
-        print(self.Self_fn, Self_x_var_upstream, self.Self_fn_params)
+    def forward(self, x, eBatch):
         fn = getattr(eBatch['Self'], self.Self_fn)
         return eval(f'fn({self.Self_inputString})')
