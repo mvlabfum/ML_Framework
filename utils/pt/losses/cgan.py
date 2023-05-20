@@ -11,8 +11,6 @@ class CGAN_Loss(Loss):
         self.mse = nn.MSELoss()
     
     def mse_generator_loss(self, d_fake, Real):
-        print(d_fake)
-        assert False
         loss = self.mse(d_fake, Real * torch.ones_like(d_fake, device=d_fake.device))
         log = {
             'gloss': loss.clone().detach().mean(),
