@@ -124,6 +124,8 @@ if app_splited_status == 'CODE1' and (not exists(environ['GENIE_ML_STORAGE0'])):
 src_dir = None
 
 # https://github.com/Kaggle/kaggle-api
+r = join(str(getenv('KAGGLE_CONFIG_DIR')), 'kaggle.json')
+print('!!!!!!!!!!!!!!!!!!', r)
 if getenv('KAGGLE_CHMOD'):
     system('chmod {} {}'.format(
         str(getenv('KAGGLE_CHMOD')),
