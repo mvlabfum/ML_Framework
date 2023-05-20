@@ -1,19 +1,20 @@
 tname:
-  forward:
-    - seq0
-    - Return: x
-  
-  seq0:
-    input: x
-    output: x
-    head:
-      - BB.Print:
-          msg: ----->
-          shape: True
-          input: False
-      - .flatten:
-          start_dim: 1
-      - torch.nn.Linear:
-          in_features: 16
-          out_features: 6
-          bias: True
+  params:
+    forward:
+      - seq0
+      - Return: x
+    
+    seq0:
+      input: x
+      output: x
+      head:
+        - BB.Print:
+            msg: ----->
+            shape: True
+            input: False
+        - .flatten:
+            start_dim: 1
+        - torch.nn.Linear:
+            in_features: 16
+            out_features: 6
+            bias: True
