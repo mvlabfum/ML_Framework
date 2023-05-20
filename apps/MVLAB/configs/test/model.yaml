@@ -5,7 +5,7 @@ tname:
   
   seq0:
     input: x
-    output: y
+    output: x
     head:
       - - BB.Print:
           msg: ----->
