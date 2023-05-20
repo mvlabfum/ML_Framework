@@ -7,7 +7,7 @@ tname:
     input: x
     output: x
     head:
-      - - BB.Print:
+      - BB.Print:
           msg: ----->
           shape: True
           input: False
