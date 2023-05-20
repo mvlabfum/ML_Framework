@@ -2,11 +2,11 @@ tname_step:
   forward:
     - input: [z, randn, [$zdim, 1, 1]]  # input z
     - seq0
-    - Return: NET_LOSS
+    - Return: LOSS_VALUE
   
   seq0:
     input:
-    output: NET_LOSS
+    output: LOSS_VALUE
     head:
       - BB.Self:
           fn: tname
