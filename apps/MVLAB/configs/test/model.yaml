@@ -10,8 +10,18 @@ net:
           output: y
           params:
             dim: 1
+      - seq2
       - Return: y
     
+    seq2:
+      input: y
+      output: y
+      head:
+        - BB.Print:
+            msg: ----->
+            shape: True
+            input: False
+
     seq0:
       input: x
       output: y1
