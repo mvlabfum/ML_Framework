@@ -8,6 +8,7 @@ class Loss(nn.Module):
         prefix = str(self.kwargs.get('prefix', ''))
         if prefix:
             prefix = prefix + '_'
+        print('------>', self.kwargs['netlossfn'])
         setattr(self, 'forward', getattr(self, prefix + self.kwargs['netlossfn'], getattr(self, f'{prefix}net_loss')))
         self.start()
     
