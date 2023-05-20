@@ -22,7 +22,11 @@ net:
             - 1
             - 4
             - 4
-      
+      tail:
+        - BB.Print:
+            msg: ----->
+            shape: True
+            input: False
       pop_supernode: 2
       supernode:
         - torch.nn.ConvTranspose2d:
