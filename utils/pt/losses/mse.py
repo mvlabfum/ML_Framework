@@ -11,8 +11,6 @@ class MSE_Loss(Loss):
         self.mse = nn.MSELoss()
 
     def mse_loss(self, y, t):
-        print(y)
-        print(t)
         loss = self.mse(y, t)
         log = {
             'loss': loss.clone().detach().mean(),
