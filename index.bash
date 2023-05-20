@@ -8,7 +8,14 @@ argfile="args"
 envfile="env"
 projectpath="/content" # fell free to choose it any what you like
 projectname="ML_Framework" # (Notic) the name of project on the `repository`.
-projectrepo="git@github.com:alihejrati/ML_Framework.git"
+projectrepo=$(cat "$projectpath/.projectrepo")
+if [ -z "$projectrepo" ]; then
+    echo "YES!!!!!"
+    projectrepo="git@github.com:mvlabfum/ML_Framework.git"
+fi
+
+echo "--> $projectrepo"
+
 
 sudo mkdir -p "$projectpath"
 
