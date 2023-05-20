@@ -35,4 +35,6 @@ class Self(BB):
         print(self.Self_fn, self.Self_inputString, self.Self_fn_params)
         print(x)
         fn = getattr(eBatch['Self'], self.Self_fn)
+        print(fn)
+        print('---------------------------')
         return eval(f'fn({self.Self_inputString})')
