@@ -31,7 +31,6 @@ class Self(BB):
             self.Self_inputString = self.Self_inputString + ', **self.Self_fn_params'
 
         print('@@@@@@@@@@@@', self.Self_inputString)
-        assert False
     def forward(self, x, eBatch):
         fn = getattr(eBatch['Self'], self.Self_fn)
         return eval(f'fn({self.Self_inputString})')
