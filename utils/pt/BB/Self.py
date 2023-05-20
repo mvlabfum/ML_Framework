@@ -27,7 +27,7 @@ class Self(BB):
 
         self.Self_inputString = ', '.join(self.Self_inputString)
         
-        if isinstance(self.Self_fn_params, dict):
+        if isinstance(self.Self_fn_params, dict) and len(self.Self_fn_params) > 0:
             self.Self_inputString = self.Self_inputString + ', **self.Self_fn_params'
 
     def forward(self, x, eBatch):
