@@ -35,6 +35,7 @@ unet:
         - 1024
 
     seq1: # up stream
+      load: True
       input: y
       output: mask
       supernode:
