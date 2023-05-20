@@ -18,7 +18,6 @@ class CGAN_Loss(Loss):
         return loss, log
         
     def mse_discriminator_loss(self, d_real, d_fake, Real, Fake):
-        print(d_real.shape, d_fake.shape)
         loss_real = self.mse(d_real, Real * torch.ones_like(d_real, device=d_real.device))
         loss_fake = self.mse(d_fake, Fake * torch.ones_like(d_fake, device=d_fake.device))
         loss = loss_real + loss_fake
