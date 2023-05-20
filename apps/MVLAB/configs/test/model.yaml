@@ -22,10 +22,12 @@ net:
             - 1
             - 8
             - 8
-        - BB.Print:
-            msg: ----->
-            shape: True
-            input: False
+        - torch.nn.Conv2d:
+            in_channels: 1
+            out_channels: 3
+            kernel_size: 4
+            stride: 2
+            padding: 1
 
 
     seq0:
