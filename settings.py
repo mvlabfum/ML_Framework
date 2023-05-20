@@ -124,12 +124,17 @@ if app_splited_status == 'CODE1' and (not exists(environ['GENIE_ML_STORAGE0'])):
 src_dir = None
 
 # https://github.com/Kaggle/kaggle-api
-r = join(str(getenv('KAGGLE_CONFIG_DIR')), 'kaggle.json')
-print('!!!!!!!!!!!!!!!!!!', r)
+kaggledict = readBIO(join(str(getenv('KAGGLE_CONFIG_DIR')), 'kaggle.json'), dotdictFlag=False)
+print('!!!!!!!!!!!!!!!!!!', kaggledict)
 if getenv('KAGGLE_CHMOD'):
     system('chmod {} {}'.format(
         str(getenv('KAGGLE_CHMOD')),
         join(str(getenv('KAGGLE_CONFIG_DIR')), 'kaggle.json')
     ))
+
+os.environ['KAGGLE_KEY'] = kaggledict.get('key', getenv('KAGGLE_KEY'))
+os.environ['KAGGLE_USERNAME'] = kaggledict.get('username', getenv('KAGGLE_USERNAME'))
+print(os.environ['KAGGLE_KEY'])
+print(os.environ['KAGGLE_KEY'])
 
 import kaggle # need to import here(after env variables had defined)
