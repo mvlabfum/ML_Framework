@@ -1,0 +1,14 @@
+tname:
+  params:
+    forward:
+      - seq0
+      - Return: y
+    
+    seq0:
+      input: x
+      output: y
+      head:
+        - BB.Print:
+            msg: ----->
+            shape: True
+            input: False
