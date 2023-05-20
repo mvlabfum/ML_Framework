@@ -104,7 +104,7 @@ class plModuleBase(pl.LightningModule):
             self.lossconfig['params']['netlossfn'] = f'{netcfg_k}_loss'
             setattr(self, f'{netcfg_k}Loss', instantiate_from_config(self.lossconfig))
 
-            _net_step_function = getattr(self, 'predefined_net_step')
+            _net_step_function = self.predefined_net_step_master0(netcfg_k)
             netpip = self.pipconfig.get(f'{netcfg_k}_step', None)
             
             if (not (netpip is None)) and (isinstance(netpip, dict)):
@@ -277,8 +277,12 @@ class plModuleBase(pl.LightningModule):
             cowsay.cow('done')
         sys.exit()
     
-    def predefined_net_step(self, batch):
-        assert False, f'hoooooooooooooooooooooooo!!'
+    def predefined_net_step_master0(self, net):
+        pipline_name = self.net2pipline(net)
+        def predefined_net_step(batch):
+            cowsay.cow('NotImplementedError:\nplease define pipline `{}`.'.format(pipline_name))
+            sys.exit()
+        return predefined_net_step
     
     def predefined_net_step_master(self, net):
         pipline_name = self.net2pipline(net)
