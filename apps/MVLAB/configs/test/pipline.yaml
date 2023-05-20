@@ -1,4 +1,4 @@
-tname_step:
+net_step:
   forward:
     - input: [z, randn, [1, 4, 4]]  # input z
     - seq0
@@ -9,8 +9,8 @@ tname_step:
     output: LOSS_VALUE
     head:
       - BB.Self:
-          fn: tname
+          fn: net
           input: [[x, z]]
       - BB.Self:
-          fn: tnameLoss
+          fn: netLoss
           input: [[y], [t]]
