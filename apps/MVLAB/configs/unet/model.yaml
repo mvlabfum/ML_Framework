@@ -23,7 +23,7 @@ unet:
         - BB.CC:
             C:
               in_channels: $seq0.f[i]
-              out_channels: $seq0.f[i_1]
+              out_channels: $seq0.f[i+1]
               kernel_size: 3
               padding: 1
               bias: False
