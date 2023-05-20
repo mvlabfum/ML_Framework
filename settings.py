@@ -125,6 +125,9 @@ src_dir = None
 
 # https://github.com/Kaggle/kaggle-api
 kaggledict = readBIO(join(str(getenv('KAGGLE_CONFIG_DIR')), 'kaggle.json'), dotdictFlag=False)
+kaggledict['key'] = kaggledict.get('key', '') or getenv('KAGGLE_KEY')
+kaggledict['username'] = kaggledict.get('username', '') or getenv('KAGGLE_USERNAME')
+
 print('!!!!!!!!!!!!!!!!!!', kaggledict)
 if getenv('KAGGLE_CHMOD'):
     system('chmod {} {}'.format(
@@ -132,8 +135,8 @@ if getenv('KAGGLE_CHMOD'):
         join(str(getenv('KAGGLE_CONFIG_DIR')), 'kaggle.json')
     ))
 
-os.environ['KAGGLE_KEY'] = kaggledict.get('key', getenv('KAGGLE_KEY'))
-os.environ['KAGGLE_USERNAME'] = kaggledict.get('username', getenv('KAGGLE_USERNAME'))
+os.environ['KAGGLE_KEY'] = kaggledict['key']
+os.environ['KAGGLE_USERNAME'] = kaggledict['username']
 print(os.environ['KAGGLE_KEY'])
 print(os.environ['KAGGLE_KEY'])
 
