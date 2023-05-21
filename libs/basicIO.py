@@ -61,7 +61,10 @@ def puml(src_fname: str, dst_fname: str, **kwargs):
     
     os.system('cat "{}" | java -jar "{}" -pipe > "{}"'.format(
         src,
-        kwargs.get('jarpath', join(getenv('GENIE_ML_STORAGE0'), '..', '..', 'plantuml.jar')),
+        kwargs.get('jarpath', 
+            # join(getenv('GENIE_ML_STORAGE0'), '..', '..', 'plantuml.jar')
+            pathBIO('//' + join('dependency', 'plantuml.jar'))
+        ),
         join(kwargs.get('dst_dpath', getenv('GENIE_ML_REPORT')), dst_fname)
     ))
 
